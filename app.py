@@ -1,6 +1,6 @@
 from flask import Flask, send_from_directory, render_template
 from flask import request
-
+import os
 from utils.HexoLinkCheck import StartCheck
 
 app = Flask(__name__)
@@ -64,5 +64,6 @@ def report_api():
     else:
         return ['请在上面输入你的域名进行报告获取！']
 if __name__ == '__main__':  # Launcher
+    os.mkdir('hexo-link-check')
     # If debug is set to True, every time when the file is saved the program will reload
     app.run(host='0.0.0.0', port=8080, debug=False)
