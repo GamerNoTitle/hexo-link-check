@@ -237,6 +237,11 @@ input.checkbox:checked:after {
 } 
 /*-- //checkbox --*/  
 /*-- copyright --*/
+.w3copyright-agile a{
+    font-size: 1em;
+    color: #fff;
+	line-height:1.8em;
+}
 .w3copyright-agile {
     margin: 2em 0 1em;
     text-align: center;
