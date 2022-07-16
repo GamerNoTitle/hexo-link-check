@@ -27,7 +27,7 @@ def check():
         domain = data['domain']
         path = data['path']
         if domain == None or path == None:
-            return {'code': -1, 'msg': 'Invalid parameters.'}
+            return render_template('index.html', status=str({'code': -1, 'msg': 'Invalid parameters.'})) 
     url = domain + path
     data = StartCheck(url)
     msg = data['msg']
