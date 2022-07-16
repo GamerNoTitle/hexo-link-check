@@ -1,10 +1,2 @@
 requests
 flask
-bs4
-lxml
-matplotlib
-numpy
-Flask-Analytics
-tqdm
-logtail-python
-sentry_sdk
