@@ -1,13 +1,5 @@
-import logging
-import re
-from django.shortcuts import render
-from flask import Flask, send_from_directory, Blueprint, render_template
-from flask import request, redirect, abort, Response
-from flask_analytics import Analytics
-import flask
-import json
-import os
-import requests as r
+from flask import Flask, send_from_directory, render_template
+from flask import request
 
 from utils.HexoLinkCheck import StartCheck
 
