@@ -1,26 +1,24 @@
-function submit() {
-  var params = {
-    domain: document.getElementsByName("domain").value,
-    linkpath: document.getElementsByName("linkpath").value,
+
+function report() {
+  const params = new URLSearchParams(location.search);
+  const domain = params.get("domain");
+  if (domain == null) {
+    document.getElementById("result").innerHTML = '你还没有进行检查哦~';
+  }
+  else{
+  var xmlhttp = new XMLHttpRequest();
+  var url = "https://api.ninym.top/hexo-link-check/report?domain=" + domain;
+  var type = "GET"; //方法
+  xmlhttp.open(type, url, true); //方法，接口，异步
+  xmlhttp.send(); //发送请求
+  xmlhttp.onreadystatechange = function () {
+    if (xmlhttp.status == 200 && xmlhttp.readyState == 4) {
+      document.getElementById("result").innerHTML = xmlhttp.responseText;
+    }
   };
-  httpPost("http://api.ninym.top/check", params);
+}
 }
 
-function httpPost(URL, PARAMS) {
-  var temp = document.createElement("form");
-  temp.action = URL;
-  temp.method = "post";
-  temp.style.display = "none";
-
-  for (var x in PARAMS) {
-    var opt = document.createElement("textarea");
-    opt.name = x;
-    opt.value = PARAMS[x];
-    temp.appendChild(opt);
-  }
-
-  document.body.appendChild(temp);
-  temp.submit();
-
-  return temp;
+function open() {
+  window.open("https://api.ninym.top/hexo-link-check/report?domain=" + document.getElementById('domain').value);'));
 }
