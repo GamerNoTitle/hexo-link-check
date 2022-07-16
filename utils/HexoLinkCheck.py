@@ -28,6 +28,8 @@ def get_link(url, ss=False):
     filename = 'hexo-link-check/' + url.replace('http://', '').replace('https://',
                                                                        '').replace('/link', '').replace('/', '')
     file = open(filename, 'wt+', encoding='utf8')
+    if 'https://' not in url and 'http://' not in url:  # 缺少协议头时自动补齐
+        url = 'http://' + url
     # 发现有些博客有检查user-agent，所以加上这个
     header = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                             'Chrome/75.0.3770.142 Safari/537.36'}
