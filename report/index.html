@@ -12,11 +12,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Hexo Link Check 检查 友链 工具" />
     <script type="application/x-javascript" src="./js/jquery-3.6.0.js"></script>
-    <script>
-      	  function open() {
-      		window.open("https://bili33.top/hexo-link-check/report/index.html?domain=" + document.getElementById('domain').value);
-      	  }
-    </script>
     <!-- Custom Theme files -->
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!-- //Custom Theme files -->
@@ -50,9 +45,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               type="text"
               name="domain"
               id="domain"
-              placeholder="请输入你的域名"
+              placeholder="请输入你的域名（不要带协议头）"
               required=""
             />
+            <script>
+              function open() {
+                window.open(
+                  "https://bili33.top/hexo-link-check/report/index.html?domain=" +
+                    document.getElementById("domain").value
+                );
+              }
+            </script>
             <button type="button" onclick="open()">Submit</button>
           </form>
           <p><a href="../index.html">我要进行友链检查~</a></p>
@@ -68,25 +71,28 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           <p>检查结果</p>
           <p id="result"></p>
           <script>
-			function report() {
-      		const params = new URLSearchParams(location.search);
-      		const domain = params.get("domain");
-      		if (domain == null) {
-      		  document.getElementById("result").innerHTML = '你还没有进行检查哦~';
-      		}
-      		else{
-      		var xmlhttp = new XMLHttpRequest();
-      		var url = "https://api.ninym.top/hexo-link-check/report?domain=" + domain;
-      		var type = "GET"; //方法
-      		xmlhttp.open(type, url, true); //方法，接口，异步
-      		xmlhttp.send(); //发送请求
-      		xmlhttp.onreadystatechange = function () {
-      		  if (xmlhttp.status == 200 && xmlhttp.readyState == 4) {
-      			document.getElementById("result").innerHTML = xmlhttp.responseText;
-      		  }
-      		};
-      	  }
-      	  }
+            function report() {
+              const params = new URLSearchParams(location.search);
+              const domain = params.get("domain");
+              if (domain == null) {
+                document.getElementById("result").innerHTML =
+                  "你还没有进行检查哦~";
+              } else {
+                var xmlhttp = new XMLHttpRequest();
+                var url =
+                  "https://api.ninym.top/hexo-link-check/report?domain=" +
+                  domain;
+                var type = "GET"; //方法
+                xmlhttp.open(type, url, true); //方法，接口，异步
+                xmlhttp.send(); //发送请求
+                xmlhttp.onreadystatechange = function () {
+                  if (xmlhttp.status == 200 && xmlhttp.readyState == 4) {
+                    document.getElementById("result").innerHTML =
+                      xmlhttp.responseText;
+                  }
+                };
+              }
+            }
           </script>
         </div>
       </div>
