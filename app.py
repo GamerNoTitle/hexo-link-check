@@ -58,6 +58,8 @@ def report_api():
         try:
             with open(filename, 'r', encoding='utf8') as f:
                 content = f.read().split('\n')
+            if content == '':
+                return '还没有详细报告，可能还正在检测中。'
             return content
         except:
             return [f'未找到 {domain} 的检查报告！']
