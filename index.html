@@ -30,13 +30,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			通过本工具对自己网站下的友链进行检查，查看对方是否添加自己为友链。<br>
 			只要上面跟下面组合起来能够访问到你的友链页面即可。<br>
 			使用举例：域名填写 <a class="custom-link" href='https://bili33.top'>https://bili33.top</a>, 友链填写 <a class="custom-link" href='https://bili33.top/link'>/link</a><br>
+			目前全面支持hexo-theme-butterfly，其他主题可能支持。<br>
 		</p>
 		</div>
 		<div class="main-agileinfo">
 			<div class="agileits-top"> 
-				<form action="https://api.ninym.top/hexo-link-check/check" method="post"> 
-					<input class="text" type="text" name="Domain" id="domain" placeholder="请输入你的域名" required="">
-					<input class="text" type="text" name="LinkPath" id='path' placeholder="请输入友链页面链接" required="">
+				<form action="https://api.ninym.top/hexo-link-check/check" method="post" enctype="application/x-www-form-urlencoded"> 
+					<input class="text" type="text" name="domain" id="domain" placeholder="请输入你的域名" required="">
+					<input class="text" type="text" name="path" id='path' placeholder="请输入友链页面链接" required="">
 					<!-- <div class="wthree-text"> 
 						<ul> 
 							<li>
@@ -45,7 +46,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</ul>
 						<div class="clear"> </div>
 					</div>    -->
-					<input type="submit" value="Submit">
+					<input id='btn' type="submit" value="Submit">
 				</form>
 				<p>前往 GamerNoTitle 的小站<br><a href="https://bili33.top"> https://bili33.top</a></p>
 				<p><a href="./report/index.html">查看以前的报告</a></p>

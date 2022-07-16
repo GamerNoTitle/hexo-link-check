@@ -24,3 +24,24 @@ function httpPost(URL, PARAMS) {
 
   return temp;
 }
+
+function check() {
+  var btn = document.getElementById('btn');
+  var domain = document.getElementById('domain');
+  var path = document.getElementById('path');
+  btn.onclick = function() {
+      var xhr = new XMLHttpRequest(); // 1
+      var domain = domain.value; // 3
+      var path = path.value; // 3
+      var params = 'domain=' + domain + '&path=' + path; // 3
+      xhr.open('post', 'ttp://api.ninym.top/hexo-link-check/check'); // 1
+      // 设置请求报文的报文头信息
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+      xhr.send(params); // 注意这里要填请求参数
+      // 获取服务器端响应的数据
+      xhr.onload = function() {
+              console.log(xhr.responseText)
+          } // 1
+  }
+}
